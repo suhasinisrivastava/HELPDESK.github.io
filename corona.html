@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link  rel="stylesheet" href="corona.css">
+</head>
+<body>
+        <div class="container">
+            <h1>Covid 19 cases in India</h1>
+            <br><br>
+           <div class="board">
+                    <div class="card tt">
+                    <h4>Total Cases</h4>
+                    <span id="total"></span>
+                    </div>
+                    <div class="card a">
+                        <h4>Active Cases</h4>
+                        <span id="active"></span>
+                        </div>
+                    <div class="card r">
+                            <h4>Total Recovered</h4>
+                            <span id="recovered"></span>
+                    </div>
+                    <div class="card c">
+                        <h4>Cases per million</h4>
+                        <span id="casesPerOneMillion"></span>
+                    </div>
+                    <div class="card d">
+                        <h4>Total Deaths</h4>
+                        <span id="deaths"></span>
+                    </div>
+                    <div class="card t">
+                        <h4>Total Tests</h4>
+                        <span id="tests"></span>
+                   </div>
+            </div>
+        </div>
+</body>
+</html>
+<script type="text/javascript">
+    fetch('https://corona.lmao.ninja/v2/countries/India').then((response)=>{
+        return response.json();
+    })
+    .then((data)=>{
+        document.getElementById("total").innerHTML=data.cases.toLocaleString();
+        document.getElementById("active").innerHTML=data.active.toLocaleString();
+        document.getElementById("casesPerOneMillion").innerHTML=data.casesPerOneMillion.toLocaleString();
+        document.getElementById("tests").innerHTML=data.tests.toLocaleString();
+        document.getElementById("recovered").innerHTML=data.recovered.toLocaleString();
+        document.getElementById("deaths").innerHTML=data.deaths.toLocaleString();
+    })
+</script>
